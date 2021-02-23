@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "testyMcTestFace"
+  description: "testyMcTestFace"
+  annotations:
+    github.com/project-slug: cultureamp/mt-test-99
+    backstage.io/techdocs-ref: url:https://github.com/cultureamp/mt-test-99
+    buildkite.com/project-slug: culture-amp/mt-test-99
+spec:
+  type: service
+  lifecycle: development
+  owner: matthewtapper

@@ -1,0 +1,23 @@
+steps:
+
+  - label: ":memo::go: Test"
+    command: "bin/ci_gotest"
+    agents:
+      queue: build-unrestricted-small
+  
+  - command: "bin/ci_build"
+    label: ":docker: Build"
+    branches: "*"
+    agents:
+      queue: $BUILD_AGENT
+    plugins:
+      cultureamp/aws-assume-role:
+        role: $BUILD_ROLE
+  
+  - wait: ~
+
+  - label: "" # My funky new pipeline"
+    command: "" # e.g. bin/ci_deploy
+    branches: "" # e.g. master | !master
+    agents:
+      queue: "" # e.g. build-unrestricted | deploy-staging | deploy-production
